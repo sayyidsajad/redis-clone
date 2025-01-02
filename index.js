@@ -7,6 +7,7 @@ const server = net.createServer((connection) => {
     const parser = new Parser({
       returnReply: (reply) => {
         const command = reply[0].toLowerCase();
+
         switch (command) {
           case "set": {
             const key = reply[1];
@@ -38,7 +39,9 @@ const server = net.createServer((connection) => {
     parser.execute(data);
   });
 });
+
 const port = 6379;
+
 server.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });
